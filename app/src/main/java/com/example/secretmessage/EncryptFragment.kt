@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 
 class EncryptFragment : Fragment() {
     override fun onCreateView(
@@ -13,8 +14,10 @@ class EncryptFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_encrypt, container, false)
+        val encryptedView = view.findViewById<TextView>(R.id.encrypted_message)
 
-
+        val message = EncryptFragmentArgs.fromBundle(requireArguments()).message
+        encryptedView.text = message.reversed()
         return view
     }
 }
